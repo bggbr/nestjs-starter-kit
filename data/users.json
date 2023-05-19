@@ -1,0 +1,21 @@
+[
+    {
+      "id": "343e130a-dad4-4e17-88e5-e82aa9fdafb4",
+      "name": "User1",
+      "email": "user1@example.com",
+      "phone": "123-456-7890"
+    },
+    {
+      "id": "dad4dad4-dad4-4e17-88e5-e82aa9fdafb4",
+      "name": "User2",
+      "email": "user2@example.com",
+      "phone": "234-567-8901"
+    },
+    {
+      "id": "88e588e5-dad4-4e17-88e5-e82aa9fdafb4",
+      "name": "User3",
+      "email": "user3@example.com",
+      "phone": "345-678-9012"
+    }
+  ]
+  
