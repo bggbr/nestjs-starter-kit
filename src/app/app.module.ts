@@ -6,7 +6,7 @@ import { UserService } from '@/user/user.service';
 import { UserRepository } from '@/user/user.repository';
 
 
-@Module({
+@Module({  
   imports: [],
   controllers: [AppController, UserController],
   providers: [AppService, UserService, UserRepository],
