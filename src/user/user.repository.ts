@@ -11,7 +11,7 @@ export class UserRepository {
     constructor() {
         try {
             this.filePath = path.join(__dirname, "..", "..", "data", "users.json");
-            this.users = JSON.parse(this.filePath);
+            this.users = JSON.parse(fs.readFileSync(this.filePath, 'utf8'));
         } catch (error) {
             console.log(error);
         }
