@@ -1,3 +1,4 @@
+import { CreateUserDto } from './dto/user.dto';
 import { Injectable } from '@nestjs/common';
 import * as fs from "fs";
 import * as path from 'path' 
@@ -15,8 +16,25 @@ export class UserService {
     return this.users;
   }
 
-  getUser(id: string): User {
+  getUserById(id: string): User {
     const user = this.users.find((user) => user.id === id);
     return user;
+  }
+
+  createUser(createUserDto: CreateUserDto): User {
+    const newUser: User = {
+      id: this.generateId(),
+      name: createUserDto.name,
+      email: createUserDto.email,
+      phone: createUserDto.phone,
+    }
+    this.users.push(newUser);
+    const newUserList = [...this.users]
+    fs.writeFileSync(path.join(__dirname, '..', '..', 'data', 'users.json'), JSON.stringify(newUserList))
+    return newUser;
+  }
+
+  private generateId(): string {
+    return uuidv4();
   }
 }
