@@ -1,16 +1,22 @@
-import { Injectable } from "@nestjs/common";
-import * as path from "path";
-import * as fs from "fs";
+import { Injectable } from '@nestjs/common';
+import * as path from 'path';
+import * as fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
-import { User } from "@/types/user.type";
+import { User } from '@/types/user.type';
 
 @Injectable()
 export class UserRepository {
     private readonly filePath: string;
-    private users: User[]
+    private users: User[];
     constructor() {
         try {
-            this.filePath = path.join(__dirname, "..", "..", "data", "users.json");
+            this.filePath = path.join(
+                __dirname,
+                '..',
+                '..',
+                'data',
+                'users.json',
+            );
             this.users = JSON.parse(fs.readFileSync(this.filePath, 'utf8'));
         } catch (error) {
             console.log(error);
@@ -28,7 +34,7 @@ export class UserRepository {
     addUser(newUser: User): User {
         const newUserWithId = { ...newUser, id: this.generateId() };
         this.users.push(newUserWithId);
-        fs.writeFileSync(this.filePath, JSON.stringify(newUserWithId));
+        fs.writeFileSync(this.filePath, JSON.stringify(this.users));
         return newUserWithId;
     }
 
